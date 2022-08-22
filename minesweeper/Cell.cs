@@ -133,7 +133,7 @@ namespace minesweeper
 						{
 							c.Content = new Emoji.Wpf.TextBlock { Text = "💣", FontSize = 350 / MainWindow.GRID_SIZE };
 						}
-						MessageBox.Show("You have lost.\nTry again!");
+						MessageBox.Show("You have ran out of flags.\nTry again!");
 						MainWindow.AppWindow.InitializeGame();
 					}
 					// Victory
