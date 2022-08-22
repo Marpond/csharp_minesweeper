@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using Emoji.Wpf;
 
 namespace minesweeper
 {
@@ -28,6 +31,46 @@ namespace minesweeper
 			PreviewMouseDown += OnClick;
 		}
 
+		private Emoji.Wpf.TextBlock GetColoredTextBlock(int bombCount)
+		{
+			SolidColorBrush brush = new SolidColorBrush();
+			switch (bombCount)
+			{
+				case 1:
+					brush.Color = Colors.Blue;
+					break;
+				case 2:
+					brush.Color = Colors.Green;
+					break;
+				case 3:
+					brush.Color = Colors.Red;
+					break;
+				case 4:
+					brush.Color = Colors.DarkOrange;
+					break;
+				case 5:
+					brush.Color = Colors.DarkOrchid;
+					break;
+				case 6:
+					brush.Color = Colors.Indigo;
+					break;
+				case 7:
+					brush.Color = Colors.DarkRed;
+					break;
+				case 8:
+					brush.Color = Colors.DeepPink;
+					break;
+			}
+
+			var coloredTextBlock = new Emoji.Wpf.TextBlock
+			{
+				Text = bombCount.ToString(),
+				FontSize = 350 / MainWindow.GRID_SIZE,
+				Foreground = brush,
+			};
+			return coloredTextBlock;
+		}
+		
 		private void OnClick(object sender, MouseButtonEventArgs e)
 		{
 			// Risk it all
@@ -54,7 +97,7 @@ namespace minesweeper
 						// Set the cell content to the number of bomb neighbours
 						else
 						{
-							cell.Content = bombCount.ToString();
+							cell.Content = GetColoredTextBlock(bombCount);
 						}
 						break;
 					// Bomb cell
@@ -62,7 +105,7 @@ namespace minesweeper
 						// Reveal all bombs
 						foreach (var c in MainWindow.CellList.Where(c => c.State is CellState.IsBomb))
 						{
-							c.Content = new Emoji.Wpf.TextBlock { Text = "💣" };
+							c.Content = new Emoji.Wpf.TextBlock { Text = "💣", FontSize = 350 / MainWindow.GRID_SIZE };
 						}
 						MessageBox.Show("You have lost.\nTry again!");
 						MainWindow.AppWindow.InitializeGame();
@@ -74,12 +117,22 @@ namespace minesweeper
 			{
 				var cell = sender as Cell;
 				cell!.IsEnabled = false;
+				Debug.Print("Right click");
+				cell.State = CellState.Flagged;
+				MainWindow.FlagCount--;
+				MainWindow.AppWindow.flagTextBlock.Text = $"{MainWindow.FlagCount} 🚩";
+				cell.Content = new Emoji.Wpf.TextBlock { Text = Emojis.Flag , FontSize = 350 / MainWindow.GRID_SIZE };
 				// If there are no flags remaining
 				if (MainWindow.FlagCount == 0)
 				{
 					// There are bombs remaining
 					if (IsBombExists())
 					{
+						// Reveal all bombs
+						foreach (var c in MainWindow.CellList.Where(c => c.State is CellState.IsBomb))
+						{
+							c.Content = new Emoji.Wpf.TextBlock { Text = "💣", FontSize = 350 / MainWindow.GRID_SIZE };
+						}
 						MessageBox.Show("You have lost.\nTry again!");
 						MainWindow.AppWindow.InitializeGame();
 					}
@@ -91,11 +144,6 @@ namespace minesweeper
 					}
 					return;
 				}
-				Debug.Print("Right click");
-				cell.State = CellState.Flagged;
-				MainWindow.FlagCount--;
-				MainWindow.AppWindow.flagTextBlock.Text = $"{MainWindow.FlagCount} 🚩";
-				cell.Content = new Emoji.Wpf.TextBlock { Text = Emojis.Flag };
 			}
 		}
 

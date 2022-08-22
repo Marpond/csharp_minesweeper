@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
 using System.Security.Cryptography;
@@ -26,10 +27,10 @@ namespace minesweeper
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private const int GRID_SIZE = 30;
+		public const int GRID_SIZE = 5;
 		public static int FlagCount;
 
-		public static List<Cell> CellList;
+		public static List<Cell> CellList = new();
 
 		public static MainWindow AppWindow;
 
@@ -37,26 +38,24 @@ namespace minesweeper
 		{
 			AppWindow = this;
 			InitializeComponent();
-			InitializeGame();
-		}
-
-		public void InitializeGame()
-		{
-			// Remove all children from the grid
-			grid.Children.Clear();
-			
-			// Set the flag count
-			FlagCount = GRID_SIZE * GRID_SIZE / 4;
-			flagTextBlock.Text = $"{FlagCount} 🚩";
-
 			// Create the grid
 			for (int i = 0; i < GRID_SIZE; i++)
 			{
 				grid.RowDefinitions.Add(new RowDefinition());
 				grid.ColumnDefinitions.Add(new ColumnDefinition());
 			}
+			InitializeGame();
+		}
 
-
+		public void InitializeGame()
+		{
+			// Remove all children from the grid
+			CellList.Clear();
+			
+			// Set the flag count
+			FlagCount = GRID_SIZE * GRID_SIZE / 6;
+			flagTextBlock.Text = $"{FlagCount} 🚩";
+			
 			// Insert cells into grid
 			CellList = new List<Cell>();
 			for (int row = 0; row < GRID_SIZE; row++)
