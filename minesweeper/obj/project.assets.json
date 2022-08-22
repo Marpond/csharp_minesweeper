@@ -1,0 +1,120 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0-windows7.0": {
+      "Emoji.Wpf/0.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Emoji.Wpf.dll": {},
+          "lib/netcoreapp3.1/Typography.GlyphLayout.dll": {},
+          "lib/netcoreapp3.1/Typography.OpenFont.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Emoji.Wpf.dll": {},
+          "lib/netcoreapp3.1/Typography.GlyphLayout.dll": {},
+          "lib/netcoreapp3.1/Typography.OpenFont.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "Emoji.Wpf/0.3.3": {
+      "sha512": "2LbqyW8v9Q731iEobd0Zq/OgssdLjlWx6CeVEt4ZPEL0KL/3ClAJPH2eq265BbtHwylolTcsna8sD6OWMruxig==",
+      "type": "package",
+      "path": "emoji.wpf/0.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "emoji.wpf.0.3.3.nupkg.sha512",
+        "emoji.wpf.nuspec",
+        "icon.png",
+        "lib/net40/Emoji.Wpf.dll",
+        "lib/net40/Typography.GlyphLayout.dll",
+        "lib/net40/Typography.OpenFont.dll",
+        "lib/netcoreapp3.1/Emoji.Wpf.dll",
+        "lib/netcoreapp3.1/Typography.GlyphLayout.dll",
+        "lib/netcoreapp3.1/Typography.OpenFont.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0-windows7.0": [
+      "Emoji.Wpf >= 0.3.3"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Marcell\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Marcell\\WPFApps\\minesweeper\\minesweeper\\minesweeper.csproj",
+      "projectName": "minesweeper",
+      "projectPath": "C:\\Users\\Marcell\\WPFApps\\minesweeper\\minesweeper\\minesweeper.csproj",
+      "packagesPath": "C:\\Users\\Marcell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marcell\\WPFApps\\minesweeper\\minesweeper\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Marcell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "Emoji.Wpf": {
+            "target": "Package",
+            "version": "[0.3.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
