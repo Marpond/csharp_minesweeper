@@ -14,7 +14,7 @@ public partial class MainWindow
     public static int FlagCount;
 
     public static List<Cell> CellList = new();
-
+    
     public static MainWindow AppWindow = null!;
 
     public MainWindow()
@@ -57,5 +57,9 @@ public partial class MainWindow
         Random random = new();
         while (CellList.Count(cell => cell.State == CellState.IsBomb) != FlagCount)
             CellList[random.Next(0, CellList.Count - 1)].State = CellState.IsBomb;
+        
+        // Calculate bomb neighbor counts
+        foreach (var cell in CellList)
+            cell.BombNeighbourCount = Cell.GetNeighbours(cell).Count(neighbour => neighbour.State == CellState.IsBomb);
     }
 }

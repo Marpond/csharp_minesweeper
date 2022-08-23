@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vp917U5eqrZhn8YDZRp72QNWK489EyNLAtWdBCJhA4zaQsfmnoVeOZnFOUBCS7AuxdpS7YAESnqAqm7wBW/p2g==",
+  "dgSpecHash": "stGSh7Ssx318WZgZEreIrpqysSAncuAwA7MxB8VZhyeiYeHk7L+D8ARtvkbF6q5uOlfxCjug/osG9vqER2xZhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marcell\\WPFApps\\minesweeper\\minesweeper\\minesweeper.csproj",
+  "projectFilePath": "C:\\Users\\Marcell\\RiderProjects\\minesweeper\\minesweeper\\minesweeper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marcell\\.nuget\\packages\\emoji.wpf\\0.3.3\\emoji.wpf.0.3.3.nupkg.sha512"
   ],

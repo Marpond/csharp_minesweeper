@@ -16,11 +16,14 @@ public class Cell : Button
     public Cell()
     {
         State = CellState.Empty;
+        BombNeighbourCount = 0;
+        
         Content = "";
         PreviewMouseDown += OnClick;
     }
 
     public CellState State { get; set; }
+    public int BombNeighbourCount { get; set; }
 
     private TextBlock GetColoredTextBlock(int bombCount)
     {
@@ -88,15 +91,14 @@ public class Cell : Button
             // Empty cell
             case CellState.Empty:
                 Debug.Print("Empty");
-                var bombCount = GetNeighbours(cell).Count(x => x.State == CellState.IsBomb);
                 // If there are no bombs, reveal all neighbours and recurse
-                if (bombCount is 0)
+                if (cell.BombNeighbourCount is 0)
                     foreach (var neighbour in GetNeighbours(cell)
                                  .Where(neighbour => neighbour.State == CellState.Empty && neighbour.IsEnabled))
                         OnClick(neighbour, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
                 // Set the cell content to the number of bomb neighbours
                 else
-                    cell.Content = GetColoredTextBlock(bombCount);
+                    cell.Content = GetColoredTextBlock(cell.BombNeighbourCount);
                 break;
             // Bomb cell
             case CellState.IsBomb:
@@ -147,7 +149,7 @@ public class Cell : Button
     /**
      * Return a list of all (max 8) neighbours of the cell
      */
-    private static List<Cell> GetNeighbours(Cell cell)
+    public static List<Cell> GetNeighbours(Cell cell)
     {
         List<Cell> list = new();
 
