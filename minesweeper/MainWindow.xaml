@@ -4,16 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
-        xmlns:local="clr-namespace:minesweeper"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="600">
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="1*"></RowDefinition>
-			<RowDefinition Height="6*"></RowDefinition>
-		</Grid.RowDefinitions>
-		<emoji:TextBlock x:Name="flagTextBlock" FontSize="45" TextAlignment="Center"></emoji:TextBlock>
-		<Grid x:Name="grid" Grid.Row="1">
-		</Grid>
-	</Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+        <emoji:TextBlock x:Name="flagTextBlock" FontSize="45" TextAlignment="Center" />
+        <Grid x:Name="grid" Grid.Row="1" />
+    </Grid>
 </Window>

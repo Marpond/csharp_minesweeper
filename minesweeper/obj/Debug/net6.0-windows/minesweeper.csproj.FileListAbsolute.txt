@@ -7,7 +7,6 @@ C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\minesw
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\minesweeper_MarkupCompile.cache
-C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\minesweeper_MarkupCompile.lref
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\minesweeper.g.resources
 C:\Users\Marcell\WPFApps\minesweeper\minesweeper\obj\Debug\net6.0-windows\minesweeper.GeneratedMSBuildEditorConfig.editorconfig

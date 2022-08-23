@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace minesweeper;
 
-namespace minesweeper
+internal static class Emojis
 {
-	internal static class Emojis
-	{
-		public static string Flag = "🚩";
-		public static string Bomb = "💣";
-	}
+    public const string FLAG = "🚩";
+    public const string BOMB = "💣";
 }
