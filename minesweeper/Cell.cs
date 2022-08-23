@@ -108,8 +108,8 @@ public class Cell : Button
                 }
 
                 // Disable these 2 if debugging
-                //MessageBox.Show("You have lost.\nTry again!");
-                //MainWindow.AppWindow.InitializeGame();
+                MessageBox.Show("You have lost.\nTry again!");
+                MainWindow.AppWindow.InitializeGame();
                 break;
         }
     }
@@ -129,7 +129,7 @@ public class Cell : Button
             // Reveal all bombs
             foreach (var c in MainWindow.CellList.Where(c => c.State is CellState.IsBomb))
             {
-                c.Content = new TextBlock { Text = Emojis.FLAG, FontSize = FONT_SIZE };
+                c.Content = new TextBlock { Text = Emojis.BOMB, FontSize = FONT_SIZE };
                 c.IsEnabled = false;
             }
 

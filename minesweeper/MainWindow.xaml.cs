@@ -10,7 +10,7 @@ namespace minesweeper;
 /// </summary>
 public partial class MainWindow
 {
-    public const int GRID_SIZE = 20;
+    public const int GRID_SIZE = 10;
     public static int FlagCount;
 
     public static List<Cell> CellList = new();
