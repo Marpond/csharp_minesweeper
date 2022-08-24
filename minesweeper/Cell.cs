@@ -15,14 +15,14 @@ public class Cell : Button
 
     public Cell()
     {
-        State = CellState.Empty;
+        Type = CellType.Empty;
         BombNeighbourCount = 0;
         
         Content = "";
         PreviewMouseDown += OnClick;
     }
 
-    public CellState State { get; set; }
+    public CellType Type { get; set; }
     public int BombNeighbourCount { get; set; }
 
     private TextBlock GetColoredTextBlock(int bombCount)
@@ -86,24 +86,24 @@ public class Cell : Button
     public void ClickCell(Cell cell)
     {
         cell.IsEnabled = false;
-        switch (cell.State)
+        switch (cell.Type)
         {
             // Empty cell
-            case CellState.Empty:
+            case CellType.Empty:
                 Debug.Print("Empty");
                 // If there are no bombs, reveal all neighbours and recurse
                 if (cell.BombNeighbourCount is 0)
                     foreach (var neighbour in GetNeighbours(cell)
-                                 .Where(neighbour => neighbour.State == CellState.Empty && neighbour.IsEnabled))
+                                 .Where(neighbour => neighbour.Type == CellType.Empty && neighbour.IsEnabled))
                         OnClick(neighbour, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
                 // Set the cell content to the number of bomb neighbours
                 else
                     cell.Content = GetColoredTextBlock(cell.BombNeighbourCount);
                 break;
             // Bomb cell
-            case CellState.IsBomb:
+            case CellType.Mine:
                 // Reveal all bombs
-                foreach (var c in MainWindow.CellList.Where(c => c.State is CellState.IsBomb))
+                foreach (var c in MainWindow.CellList.Where(c => c.Type is CellType.Mine))
                 {
                     c.Content = new TextBlock { Text = Emojis.BOMB, FontSize = FONT_SIZE };
                     c.IsEnabled = false;
@@ -119,17 +119,17 @@ public class Cell : Button
     private void FlagCell(Cell cell)
     {
         cell.IsEnabled = false;
-        cell.State = CellState.Flagged;
+        cell.Type = CellType.Flag;
         MainWindow.FlagCount--;
         MainWindow.AppWindow.flagTextBlock.Text = $"{MainWindow.FlagCount} {Emojis.FLAG}";
         cell.Content = new TextBlock { Text = Emojis.FLAG, FontSize = FONT_SIZE };
-        // If there are no flags remaining
+        // If there are flags remaining
         if (MainWindow.FlagCount != 0) return;
-        // There are bombs remaining
-        if (MainWindow.CellList.Any(c => c.State is CellState.IsBomb))
+        // There are mines remaining
+        if (MainWindow.CellList.Any(c => c.Type is CellType.Mine))
         {
-            // Reveal all bombs
-            foreach (var c in MainWindow.CellList.Where(c => c.State is CellState.IsBomb))
+            // Reveal all mines
+            foreach (var c in MainWindow.CellList.Where(c => c.Type is CellType.Mine))
             {
                 c.Content = new TextBlock { Text = Emojis.BOMB, FontSize = FONT_SIZE };
                 c.IsEnabled = false;

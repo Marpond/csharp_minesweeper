@@ -10,13 +10,12 @@ namespace minesweeper;
 /// </summary>
 public partial class MainWindow
 {
-    public const int GRID_SIZE = 10;
+    public const int GRID_SIZE = 20;
     public static int FlagCount;
 
     public static List<Cell> CellList = new();
     
     public static MainWindow AppWindow = null!;
-
     public MainWindow()
     {
         AppWindow = this;
@@ -55,11 +54,11 @@ public partial class MainWindow
 
         // Create bombs
         Random random = new();
-        while (CellList.Count(cell => cell.State == CellState.IsBomb) != FlagCount)
-            CellList[random.Next(0, CellList.Count - 1)].State = CellState.IsBomb;
+        while (CellList.Count(cell => cell.Type == CellType.Mine) != FlagCount)
+            CellList[random.Next(0, CellList.Count - 1)].Type = CellType.Mine;
         
         // Calculate bomb neighbor counts
         foreach (var cell in CellList)
-            cell.BombNeighbourCount = Cell.GetNeighbours(cell).Count(neighbour => neighbour.State == CellState.IsBomb);
+            cell.BombNeighbourCount = Cell.GetNeighbours(cell).Count(neighbour => neighbour.Type == CellType.Mine);
     }
 }
