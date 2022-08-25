@@ -25,36 +25,21 @@ public class Cell : Button
     public CellType Type { get; set; }
     public int BombNeighbourCount { get; set; }
 
-    private TextBlock GetColoredTextBlock(int bombCount)
+    private static TextBlock GetColoredTextBlock(int bombCount)
     {
         var brush = new SolidColorBrush();
-        switch (bombCount)
+        brush.Color = bombCount switch
         {
-            case 1:
-                brush.Color = Colors.Blue;
-                break;
-            case 2:
-                brush.Color = Colors.Green;
-                break;
-            case 3:
-                brush.Color = Colors.Red;
-                break;
-            case 4:
-                brush.Color = Colors.DarkOrange;
-                break;
-            case 5:
-                brush.Color = Colors.DarkOrchid;
-                break;
-            case 6:
-                brush.Color = Colors.Indigo;
-                break;
-            case 7:
-                brush.Color = Colors.DarkRed;
-                break;
-            case 8:
-                brush.Color = Colors.DeepPink;
-                break;
-        }
+            1 => Colors.Blue,
+            2 => Colors.Green,
+            3 => Colors.Red,
+            4 => Colors.DarkOrange,
+            5 => Colors.DarkOrchid,
+            6 => Colors.Indigo,
+            7 => Colors.DarkRed,
+            8 => Colors.DeepPink,
+            _ => brush.Color
+        };
 
         var coloredTextBlock = new TextBlock
         {
